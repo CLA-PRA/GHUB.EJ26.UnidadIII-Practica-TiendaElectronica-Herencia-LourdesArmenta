@@ -1,0 +1,13 @@
+./logica/Telefono.java
+./logica/ConsolaVideojuego.java
+./logica/Computadora.java
+./logica/Tableta.java
+./logica/Carrito.java
+./logica/Inventario.java
+./logica/Videojuego.java
+./logica/LineaCarrito.java
+./logica/Producto.java
+./interfaz/MenuTienda.java
+./interfaz/Lector.java
+./miTest/AppTest.java
+./miPrincipal/Principal.java
