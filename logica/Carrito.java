@@ -20,26 +20,9 @@ public class Carrito {
     }
 
     public boolean agregar(String id, int cantidad) {
-        if (inventario == null || cantidad <= 0) {
-            return false;
-        }
-        Producto producto = inventario.obtener(id);
-        if (producto == null) {
-            return false;
-        }
-        int idx = indexOf(id);
-        if (idx < 0 && lineas.size() >= capacidadMaxima) {
-            return false;
-        }
-        if (!inventario.retirar(id, cantidad)) {
-            return false;
-        }
-        if (idx >= 0) {
-            lineas.get(idx).incrementar(cantidad);
-        } else {
-            lineas.add(new LineaCarrito(producto, cantidad));
-        }
-        return true;
+        // TODO(autograding): Validar entrada, retirar del inventario y agregar/incrementar línea.
+        // Pista: si el id no está en carrito y ya se alcanzó la capacidad, debe fallar.
+        return false;
     }
 
     public boolean agregar(Producto producto, int cantidad) {
@@ -54,25 +37,9 @@ public class Carrito {
     }
 
     public boolean eliminar(String id, int cantidad) {
-        if (inventario == null || cantidad <= 0) {
-            return false;
-        }
-        int idx = indexOf(id);
-        if (idx < 0) {
-            return false;
-        }
-        LineaCarrito linea = lineas.get(idx);
-        if (linea.getCantidad() < cantidad) {
-            return false;
-        }
-        if (!inventario.reabastecer(id, cantidad)) {
-            return false;
-        }
-        linea.reducir(cantidad);
-        if (linea.getCantidad() == 0) {
-            lineas.remove(idx);
-        }
-        return true;
+        // TODO(autograding): Devolver stock al inventario y reducir cantidad de la línea.
+        // Pista: cuando la cantidad quede en cero, elimina la línea del ArrayList.
+        return false;
     }
 
     public int getCantidad(String id) {
@@ -84,19 +51,15 @@ public class Carrito {
     }
 
     public double total() {
-        double suma = 0.0;
-        for (LineaCarrito linea : lineas) {
-            suma += linea.getProducto().getPrecio() * linea.getCantidad();
-        }
-        return suma;
+        // TODO(autograding): Acumular subtotal por línea (precio * cantidad).
+        // Pista: recorre lineas y suma en una variable acumuladora.
+        return 0.0;
     }
 
     public double totalConDescuento(double porcentaje) {
-        double porcentajeValido = porcentaje;
-        if (porcentajeValido < 0 || porcentajeValido > 100) {
-            porcentajeValido = 0.0;
-        }
-        return total() * (1.0 - porcentajeValido / 100.0);
+        // TODO(autograding): Aplicar descuento porcentual solo en rango [0,100].
+        // Pista: reutiliza total() para evitar duplicar cálculo.
+        return total();
     }
 
     public double totalConDescuento(String cupon) {
@@ -171,31 +134,14 @@ public class Carrito {
     }
 
     private int indexOf(String id) {
-        if (id == null || id.isBlank()) {
-            return -1;
-        }
-        String buscado = id.trim();
-        for (int i = 0; i < lineas.size(); i++) {
-            if (lineas.get(i).getProducto().getId().equalsIgnoreCase(buscado)) {
-                return i;
-            }
-        }
+        // TODO(autograding): Buscar posición de la línea por id ignorando mayúsculas/minúsculas.
+        // Pista: retorna -1 cuando no exista coincidencia.
         return -1;
     }
 
     private double porcentajeSegunCupon(String cupon) {
-        if (cupon == null) {
-            return 0.0;
-        }
-        switch (cupon.trim().toUpperCase(Locale.ROOT)) {
-            case "REGALO10":
-            case "GAMER10":
-                return 10.0;
-            case "TECH20":
-            case "GAMER20":
-                return 20.0;
-            default:
-                return 0.0;
-        }
+        // TODO(autograding): Mapear cupones válidos a porcentaje de descuento.
+        // Pista: REGALO10 y GAMER10 => 10; TECH20 y GAMER20 => 20.
+        return 0.0;
     }
 }

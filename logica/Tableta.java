@@ -8,40 +8,44 @@ public class Tableta extends Producto {
     private boolean incluyeLapiz;
 
     public Tableta() {
-        this("NA", "Tableta", 0.0, "Generica", 10.1, false);
+        // TODO(autograding): Construir una tableta por defecto con datos válidos.
+        // Pista: usa this(...) para delegar al constructor completo.
+        this("", "", 0.0, "", 0.0, false);
     }
 
     public Tableta(String id, String nombre, double precio, String marca,
             double pulgadas, boolean incluyeLapiz) {
+        // TODO(autograding): Inicializar atributos heredados y propios.
+        // Pista: valida pulgadas positivas antes de asignar.
         super(id, nombre, precio, marca);
-        this.pulgadas = valorPositivo(pulgadas, 10.1);
-        this.incluyeLapiz = incluyeLapiz;
+        this.pulgadas = 0.0;
+        this.incluyeLapiz = false;
     }
 
     public Tableta(Tableta otra) {
+        // TODO(autograding): Implementar constructor copia completo.
+        // Pista: si otra es null, usa valores por defecto.
         super(otra);
-        if (otra == null) {
-            this.pulgadas = 10.1;
-            this.incluyeLapiz = false;
-            return;
-        }
-        this.pulgadas = otra.pulgadas;
-        this.incluyeLapiz = otra.incluyeLapiz;
+        this.pulgadas = 0.0;
+        this.incluyeLapiz = false;
     }
 
     private static double valorPositivo(double valor, double porDefecto) {
-        if (valor <= 0) {
-            return porDefecto;
-        }
-        return valor;
+        // TODO(autograding): Regresar valor cuando sea positivo; si no, porDefecto.
+        // Pista: helper para evitar duplicar validaciones.
+        return porDefecto;
     }
 
     public double getPulgadas() {
-        return pulgadas;
+        // TODO(autograding): Regresar pulgadas de pantalla.
+        // Pista: getter directo.
+        return 0.0;
     }
 
     public boolean isIncluyeLapiz() {
-        return incluyeLapiz;
+        // TODO(autograding): Indicar si incluye lápiz.
+        // Pista: método booleano tipo "is".
+        return false;
     }
 
     @Override
@@ -51,12 +55,8 @@ public class Tableta extends Producto {
 
     @Override
     public String getDetalleTecnico() {
-        String detalleLapiz;
-        if (incluyeLapiz) {
-            detalleLapiz = "incluye lapiz";
-        } else {
-            detalleLapiz = "sin lapiz";
-        }
-        return String.format(Locale.US, "Pantalla %.1f\", %s", pulgadas, detalleLapiz);
+        // TODO(autograding): Devolver detalle con pulgadas e información de lápiz.
+        // Pista: conserva formato tipo "Pantalla X.X\", ...".
+        return "Tableta sin detalle";
     }
 }

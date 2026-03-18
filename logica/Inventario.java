@@ -44,46 +44,27 @@ public class Inventario {
     }
 
     public boolean hayStock(String id, int cantidad) {
-        if (cantidad <= 0) {
-            return false;
-        }
-        int idx = indexOf(id);
-        if (idx < 0) {
-            return false;
-        }
-        return stock.get(idx) >= cantidad;
+        // TODO(autograding): Verificar cantidad válida, producto existente y stock suficiente.
+        // Pista: usa indexOf(id) para encontrar la posición del producto.
+        return false;
     }
 
     public boolean retirar(String id, int cantidad) {
-        if (cantidad <= 0) {
-            return false;
-        }
-        int idx = indexOf(id);
-        if (idx < 0 || stock.get(idx) < cantidad) {
-            return false;
-        }
-        stock.set(idx, stock.get(idx) - cantidad);
-        return true;
+        // TODO(autograding): Restar stock solo cuando exista producto y alcance inventario.
+        // Pista: si la operación procede, actualiza stock con set(posicion, nuevoValor).
+        return false;
     }
 
     public boolean reabastecer(String id, int cantidad) {
-        if (cantidad <= 0) {
-            return false;
-        }
-        int idx = indexOf(id);
-        if (idx < 0) {
-            return false;
-        }
-        stock.set(idx, stock.get(idx) + cantidad);
-        return true;
+        // TODO(autograding): Sumar stock cuando la cantidad sea positiva y el id exista.
+        // Pista: este método es el inverso conceptual de retirar(...).
+        return false;
     }
 
     public Producto obtener(String id) {
-        int idx = indexOf(id);
-        if (idx < 0) {
-            return null;
-        }
-        return catalogo.get(idx);
+        // TODO(autograding): Regresar el producto asociado al id o null si no existe.
+        // Pista: primero localiza índice y luego consulta catalogo.
+        return null;
     }
 
     public int getTamanio() {
@@ -105,28 +86,14 @@ public class Inventario {
     }
 
     private int indexOf(String id) {
-        if (id == null || id.isBlank()) {
-            return -1;
-        }
-        String buscado = id.trim();
-        for (int i = 0; i < catalogo.size(); i++) {
-            if (catalogo.get(i).getId().equalsIgnoreCase(buscado)) {
-                return i;
-            }
-        }
+        // TODO(autograding): Buscar linealmente por id ignorando mayúsculas/minúsculas.
+        // Pista: recuerda validar null/blanco antes de iterar.
         return -1;
     }
 
     private boolean validarRegistro(Producto producto, int existenciasIniciales) {
-        if (producto == null || !producto.tieneDatosBasicosValidos()) {
-            return false;
-        }
-        if (existenciasIniciales < 0) {
-            return false;
-        }
-        if (catalogo.size() >= capacidadMaxima) {
-            return false;
-        }
-        return indexOf(producto.getId()) < 0;
+        // TODO(autograding): Validar datos del producto, stock inicial y capacidad.
+        // Pista: también debes rechazar ids duplicados en el catálogo.
+        return false;
     }
 }

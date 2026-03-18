@@ -91,30 +91,16 @@ public class Producto {
     }
 
     public double precioConDescuento(double porcentaje) {
-        double porcentajeValido = porcentaje;
-        if (porcentajeValido < 0 || porcentajeValido > 100) {
-            porcentajeValido = 0.0;
-        }
+        // TODO(autograding): Validar que el porcentaje quede entre 0 y 100.
+        // Pista: si es inválido, regresa el precio original sin cambios.
+        double porcentajeValido = 0.0;
         return precio * (1.0 - porcentajeValido / 100.0);
     }
 
     public double precioConDescuento(String cupon) {
+        // TODO(autograding): Traducir el cupón a porcentaje (10% o 20%).
+        // Pista: normaliza el texto con trim + mayúsculas.
         double porcentaje = 0.0;
-        if (cupon != null) {
-            switch (cupon.trim().toUpperCase(Locale.ROOT)) {
-                case "REGALO10":
-                case "GAMER10":
-                    porcentaje = 10.0;
-                    break;
-                case "TECH20":
-                case "GAMER20":
-                    porcentaje = 20.0;
-                    break;
-                default:
-                    porcentaje = 0.0;
-                    break;
-            }
-        }
         return precioConDescuento(porcentaje);
     }
 

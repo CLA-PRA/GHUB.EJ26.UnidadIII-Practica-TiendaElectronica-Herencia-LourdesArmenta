@@ -6,40 +6,44 @@ public class ConsolaVideojuego extends Producto {
     private boolean portatil;
 
     public ConsolaVideojuego() {
-        this("NA", "Consola", 0.0, "Generica", "Edicion estandar", false);
+        // TODO(autograding): Construir una consola por defecto con datos válidos.
+        // Pista: usa this(...) para delegar en el constructor completo.
+        this("", "", 0.0, "", "", false);
     }
 
     public ConsolaVideojuego(String id, String nombre, double precio, String marca,
             String modelo, boolean portatil) {
+        // TODO(autograding): Inicializar atributos heredados y propios.
+        // Pista: valida texto no vacío para modelo antes de asignar.
         super(id, nombre, precio, marca);
-        this.modelo = textoOValor(modelo, "Edicion estandar");
-        this.portatil = portatil;
+        this.modelo = "";
+        this.portatil = false;
     }
 
     public ConsolaVideojuego(ConsolaVideojuego otra) {
+        // TODO(autograding): Implementar constructor copia.
+        // Pista: si otra es null, asigna valores por defecto.
         super(otra);
-        if (otra == null) {
-            this.modelo = "Edicion estandar";
-            this.portatil = false;
-            return;
-        }
-        this.modelo = otra.modelo;
-        this.portatil = otra.portatil;
+        this.modelo = "";
+        this.portatil = false;
     }
 
     private static String textoOValor(String valor, String porDefecto) {
-        if (valor == null || valor.trim().isBlank()) {
-            return porDefecto;
-        }
-        return valor.trim();
+        // TODO(autograding): Retornar valor limpio o porDefecto cuando venga vacío.
+        // Pista: trim() + isBlank() resuelven espacios.
+        return porDefecto;
     }
 
     public String getModelo() {
-        return modelo;
+        // TODO(autograding): Regresar el modelo de la consola.
+        // Pista: getter directo del atributo.
+        return "";
     }
 
     public boolean isPortatil() {
-        return portatil;
+        // TODO(autograding): Indicar si la consola es portátil.
+        // Pista: getter booleano tipo "is".
+        return false;
     }
 
     @Override
@@ -49,12 +53,8 @@ public class ConsolaVideojuego extends Producto {
 
     @Override
     public String getDetalleTecnico() {
-        String tipoConsola;
-        if (portatil) {
-            tipoConsola = "portatil";
-        } else {
-            tipoConsola = "sobremesa";
-        }
-        return modelo + ", " + tipoConsola;
+        // TODO(autograding): Devolver detalle con modelo y tipo (portátil/sobremesa).
+        // Pista: conserva el formato "modelo, tipo".
+        return "Consola sin detalle";
     }
 }

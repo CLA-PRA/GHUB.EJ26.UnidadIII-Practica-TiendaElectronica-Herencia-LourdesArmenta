@@ -10,6 +10,20 @@ Implementar un sistema orientado a objetos con productos heterogeneos, inventari
 - Inventario (catalogo + existencias)
 - Carrito (operaciones de compra, devolucion y totalizacion)
 
+## Version plantilla para autograding
+
+Esta version del proyecto incluye metodos con logica incompleta marcados con `TODO(autograding)`.
+
+- Objetivo didactico: que el estudiante implemente validaciones, busquedas y calculos respetando herencia/polimorfismo.
+- Los `TODO` ya tienen pistas cortas para orientar la solucion sin darla completa.
+- El proyecto compila, pero varias pruebas fallaran hasta completar la logica.
+
+Archivos con vaciado intencional de logica:
+
+- `logica/Producto.java`
+- `logica/Inventario.java`
+- `logica/Carrito.java`
+
 ## Requisitos funcionales
 
 ### 1) Jerarquia de productos
